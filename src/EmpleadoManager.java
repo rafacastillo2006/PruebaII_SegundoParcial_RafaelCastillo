@@ -61,6 +61,11 @@ public class EmpleadoManager {
 
     private RandomAccessFile salesFileFor(int code) throws IOException {
         String dirPadre = employeeFolder(code);
+        File dir = new File(dirPadre);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
         int yearActual = Calendar.getInstance().get(Calendar.YEAR);
         String path = dirPadre + "/ventas" + yearActual + ".emp";
         return new RandomAccessFile(path, "rw");
@@ -148,8 +153,13 @@ public class EmpleadoManager {
 
     public RandomAccessFile billsFileFor(int code) throws IOException {
         String dirPadre = employeeFolder(code);
-        String ruta = dirPadre + "/recibos.emp";
-        return new RandomAccessFile(ruta, "rw");
+        File dir = new File(dirPadre);
+        if (!dir.exists()) {
+            dir.mkdirs();
+        }
+
+        String path = dirPadre + "/recibos.emp";
+        return new RandomAccessFile(path, "rw");
     }
 
     public boolean isEmployeePayed(int code) throws IOException {
