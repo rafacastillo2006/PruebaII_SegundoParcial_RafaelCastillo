@@ -41,7 +41,7 @@ public class EmpleadoMain {
                         int codVenta = sc.nextInt();
                         System.out.print("Monto de la venta: ");
                         double monto = sc.nextDouble();
-                        manager.addSaletoEmployee1(codVenta, monto);
+                        manager.addSaletoEmployee(codVenta, monto);
                         break;
 
                     case 4:
